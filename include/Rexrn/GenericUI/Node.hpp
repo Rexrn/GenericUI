@@ -10,6 +10,8 @@ class Node
 {
 public:
 	virtual ~Node() = default;
+
+	class Element* parent = nullptr;
 };
 
 }
