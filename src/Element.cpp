@@ -12,7 +12,11 @@ namespace gui
 void Element::appendChild( std::unique_ptr<Node> node_ )
 {
 	assert(node_.get());
-	assert(!this->isParentOf(*node));
+	assert(!node_->parent);
+	assert(!this->isParentOf(*node_));
+	
+	node_->parent = this;
+	_children.push_back( std::move(node_) );
 }
 
 /////////////////////////////////////////////////////////
