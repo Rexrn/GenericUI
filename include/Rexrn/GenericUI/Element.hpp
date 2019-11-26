@@ -15,34 +15,31 @@ class Element
 	: public Node
 {
 public:
+	using ChildrenContainer = std::vector< std::shared_ptr<Node> >;
+
 	/// <summary>Appends a child.</summary>
 	/// <param name="node_">The child node.</param>
 	void appendChild( std::unique_ptr<Node> node_ );
 
 	/// <summary>Removes every child.</summary>
 	/// <param name="releaseMemory_">Whether to release memory used by the children container.</param>
-	void clearChildren(bool releaseMemory_ = true)
-	{
-		_children.clear();
-		if (releaseMemory_)
-			_children.shrink_to_fit();
-	}
+	void clearChildren(bool releaseMemory_ = true);
 
 	/// <summary>Releases children.</summary>
-	auto releaseChildren()
-	{
-		auto ret = std::move(_children);
-		this->clearChildren(); // TODO: check if this is necessary.
-		return ret;
-	}
+	ChildrenContainer releaseChildren();
+
+	/// <summary>Determines whether element is parent of the specified node.</summary>
+	/// <param name="node_">The tested node.</param>
+	/// <param name="recursive_">Whether to check recursively or not.</param>
+	bool isParentOf(Node const& node_, bool recursive_ = false) const;
 
 	/// <summary>Returns the children container (by cref).</summary>
-	auto const& getChildren() const
+	ChildrenContainer const& getChildren() const
 	{
 		return _children;
 	}
 protected:
-	std::vector< std::shared_ptr<Node> > _children;
+	ChildrenContainer _children;
 };
 
 }
