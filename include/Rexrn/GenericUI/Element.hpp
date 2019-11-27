@@ -34,10 +34,7 @@ public:
 	bool isParentOf(Node const& node_, bool recursive_ = false) const;
 
 	/// <summary>Returns the children container (by cref).</summary>
-	ChildrenContainer const& getChildren() const
-	{
-		return _children;
-	}
+	ChildrenContainer const& getChildren() const;
 protected:
 	ChildrenContainer _children;
 };
