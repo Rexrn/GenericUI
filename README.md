@@ -31,7 +31,7 @@ int main()
 	// Create header logo:
 	{
 		auto headerLogo = gui::construct<gui::Image>(headerImageSrc);
-		// column span, row span, , the child
+		// column span, row span, the child
 		root.view.setChild( { 0, 3 }, { 0, 1 }, headerLogo );
 	}
 
