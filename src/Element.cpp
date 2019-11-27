@@ -40,7 +40,7 @@ bool Element::isParentOf(Node const& node_, bool recursive_) const
 {
 	auto it = std::find_if(
 			_children.begin(), _children.end(),
-			[&node_](std::shared_ptr<Node> &e) {
+			[&node_](std::shared_ptr<Node> const &e) {
 				return e.get() == &node_;
 			}
 		);
