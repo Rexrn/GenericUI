@@ -73,7 +73,7 @@ int main()
 
 	// Add button click event listener:
 	{
-		// Optain reference to the button element:
+		// Obtain reference to the button element:
 		auto btnElement = root.element->getElementById("btn");
 
 		// Create button view:
